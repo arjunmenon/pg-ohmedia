@@ -42,7 +42,7 @@
     <title>OH Media</title>
 </head>
 
-<body >
+<body  onload="onLoad()">
     <div class="app">
         <h1>OH Media</h1>
         <div id="deviceready" class="blink">
@@ -53,6 +53,14 @@
             <!-- <p><input type="button" value="Start server" onclick="msg()" /></p> -->
             <p><input type="button" value="Send Request" onclick="sendReq()" /></p>
             <p id="response"></p>
+            <p>Demo for CorHttpd Plugin</p>
+    <p><button onclick="startServer('htdocs');">Start Httpd at www/htdocs</button></p>
+    <p><button onclick="startServer('/');">Start Httpd at /</button></p>
+    <p><button onclick="stopServer();">Stop Httpd</button></p>
+    <p><button onclick="updateStatus();">Check Status</button></p>
+    <div id='location'></div>
+    <div id='url'></div>
+<div id='localpath'></div>
         </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
@@ -60,8 +68,14 @@
     <script type="text/javascript">
         app.initialize();
 
-        window.addEventListener('load', function() {
-                webserver.onRequest(
+   
+
+        function onLoad() {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+
+        
+        webserver.onRequest(
                     function(request) {
                         console.log("O MA GAWD! This is the request: ", request);
                         document.getElementById("server").innerHTML = "O MA GAWD! This is the request: " + request;
@@ -88,17 +102,6 @@
                       },
                       1337
                 );
-        }, false);
-
-        // function init() {
-        //     // the next line makes it impossible to see Contacts on the HTC Evo since it
-        //     // doesn't have a scroll button
-        //     // document.addEventListener("touchmove", preventBehavior, false);
-        //     document.addEventListener("deviceready", deviceInfo, true);
-        // }
-
-        
-
 
         function request(method, url, data, callback) {
           var xhttp = new XMLHttpRequest();
@@ -119,6 +122,62 @@
                 document.getElementById("response").innerHTML = JSON.stringify(response);
             });
         }
+
+            function onDeviceReady() {
+        httpd = ( cordova && cordova.plugins && cordova.plugins.CorHttpd ) ? cordova.plugins.CorHttpd : null;
+        startServer("htdocs");
+    }
+    function updateStatus() {
+        document.getElementById('location').innerHTML = "document.location.href: " + document.location.href;
+        if( httpd ) {
+            httpd.getURL(function(url){
+                if(url.length > 0) {
+                    document.getElementById('url').innerHTML = "server is up: <a href='" + url + "' target='_blank'>" + url + "</a>";
+                } else {
+                    document.getElementById('url').innerHTML = "server is down.";
+                }
+            });
+            httpd.getLocalPath(function(path){
+                document.getElementById('localpath').innerHTML = "<br/>localPath: " + path;
+            });
+        } else {
+            alert('CorHttpd plugin not available/ready.');
+        }
+    }
+    function startServer( wwwroot ) {
+        if ( httpd ) {
+            httpd.getURL(function(url){
+                if(url.length > 0) {
+                    document.getElementById('url').innerHTML = "server is up: <a href='" + url + "' target='_blank'>" + url + "</a>";
+                } else {
+                    httpd.startServer({
+                        'www_root' : wwwroot,
+                        'port' : 8080
+                    }, function( url ){
+                        //document.getElementById('url').innerHTML = "server is started: <a href='" + url + "' target='_blank'>" + url + "</a>";
+                        updateStatus();
+                    }, function( error ){
+                        document.getElementById('url').innerHTML = 'failed to start server: ' + error;
+                    });
+                }
+                
+            },function(){});
+        } else {
+            alert('CorHttpd plugin not available/ready.');
+        }
+    }
+    function stopServer() {
+        if ( httpd ) {
+            httpd.stopServer(function(){
+                //document.getElementById('url').innerHTML = 'server is stopped.';
+                updateStatus();
+            },function( error ){
+                document.getElementById('url').innerHTML = 'failed to stop server' + error;
+            });
+        } else {
+            alert('CorHttpd plugin not available/ready.');
+        }
+    }
         
     </script>
 </body>
