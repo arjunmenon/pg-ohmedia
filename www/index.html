@@ -107,7 +107,7 @@
 
         function sendReq() {
             // body...
-            request('GET', 'https://google.com', undefined, function (response) {
+            request('GET', 'localhost:8080', undefined, function (response) {
                 document.getElementById("response").innerHTML = JSON.stringify(response);
             });
         }
