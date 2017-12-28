@@ -23,7 +23,7 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.5" />
 
     <plugin name="cordova-plugin-x-toast" />
-    <plugin name="cordova-plugin-file-transfer" />
+    
     <plugin name="Service-Discovery-DLNA-SSDP" spec="https://github.com/scottdermott/cordova-plugin-discovery.git" />
 
     <plugin name="https://github.com/arjunmenon/cordova-plugin-music.git" />
