@@ -34,7 +34,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-                
+
         var serviceType = "ssdp:all";
         
         var success = function(devices) {
@@ -47,6 +47,26 @@ var app = {
         }
         
         serviceDiscovery.getNetworkServices(serviceType, success, failure);
+
+        webserver.onRequest(
+            function(request) {
+                console.log("O MA GAWD! This is the request: ", request);
+                document.getElementById("serer").innerHTML = "O MA GAWD! This is the request: " + request;
+
+                webserver.sendResponse(
+                    request.requestId,
+                    {
+                        status: 200,
+                        body: '<html>Hello World</html>',
+                        headers: {
+                            'Content-Type': 'text/html'
+                        }
+                    }
+                );
+            }
+        );
+
+        webserver.start(8000);
 
     },
     // Update DOM on a Received Event
