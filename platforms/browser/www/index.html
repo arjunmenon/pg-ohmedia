@@ -42,7 +42,7 @@
     <title>OH Media</title>
 </head>
 
-<body>
+<body >
     <div class="app">
         <h1>OH Media</h1>
         <div id="deviceready" class="blink">
@@ -59,6 +59,38 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
+
+        window.addEventListener('load', function() {
+                webserver.onRequest(
+                    function(request) {
+                        console.log("O MA GAWD! This is the request: ", request);
+                        document.getElementById("server").innerHTML = "O MA GAWD! This is the request: " + request;
+
+                        webserver.sendResponse(
+                            request.requestId,
+                            {
+                                status: 200,
+                                body: '<html>Hello World</html>',
+                                headers: {
+                                    'Content-Type': 'text/html'
+                                }
+                            }
+                        );
+                    }
+                );
+
+                webserver.start();
+        }, false);
+
+        // function init() {
+        //     // the next line makes it impossible to see Contacts on the HTC Evo since it
+        //     // doesn't have a scroll button
+        //     // document.addEventListener("touchmove", preventBehavior, false);
+        //     document.addEventListener("deviceready", deviceInfo, true);
+        // }
+
+        
+
 
         function request(method, url, data, callback) {
           var xhttp = new XMLHttpRequest();
