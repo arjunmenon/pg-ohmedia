@@ -79,7 +79,15 @@
                     }
                 );
 
-                webserver.start();
+                webserver.start(
+                      function() {
+                        alert('Success!');
+                      },
+                      function() {
+                        alert('Error!');
+                      },
+                      1337
+                );
         }, false);
 
         // function init() {
