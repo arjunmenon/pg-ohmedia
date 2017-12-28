@@ -1,0 +1,94 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'https://github.com/floatinghotpot/cordova-httpd.git',
+1 verbose cli   '--production',
+1 verbose cli   '--no-save' ]
+2 info using npm@3.10.10
+3 info using node@v6.12.2
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData https://github.com/floatinghotpot/cordova-httpd.git
+8 silly fetchOtherPackageData https://github.com/floatinghotpot/cordova-httpd.git
+9 silly cache add args [ 'https://github.com/floatinghotpot/cordova-httpd.git', null ]
+10 verbose cache add spec https://github.com/floatinghotpot/cordova-httpd.git
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'https://github.com/floatinghotpot/cordova-httpd.git',
+11 silly cache add   scope: null,
+11 silly cache add   escapedName: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'https://github.com/floatinghotpot/cordova-httpd.git',
+11 silly cache add   spec: 'git+https://github.com/floatinghotpot/cordova-httpd.git',
+11 silly cache add   type: 'hosted',
+11 silly cache add   hosted:
+11 silly cache add    { type: 'github',
+11 silly cache add      ssh: 'git@github.com:floatinghotpot/cordova-httpd.git',
+11 silly cache add      sshUrl: 'git+ssh://git@github.com/floatinghotpot/cordova-httpd.git',
+11 silly cache add      httpsUrl: 'git+https://github.com/floatinghotpot/cordova-httpd.git',
+11 silly cache add      gitUrl: 'git://github.com/floatinghotpot/cordova-httpd.git',
+11 silly cache add      shortcut: 'github:floatinghotpot/cordova-httpd',
+11 silly cache add      directUrl: 'https://raw.githubusercontent.com/floatinghotpot/cordova-httpd/master/package.json' } }
+12 verbose addRemoteGit caching https://github.com/floatinghotpot/cordova-httpd.git
+13 verbose addRemoteGit git+https://github.com/floatinghotpot/cordova-httpd.git is a repository hosted by github
+14 silly tryClone cloning git+https://github.com/floatinghotpot/cordova-httpd.git via git+https://github.com/floatinghotpot/cordova-httpd.git
+15 verbose tryClone git-https-github-com-floatinghotpot-cordova-httpd-git-a3df7e14 not in flight; caching
+16 verbose correctMkdir /home/arjun/.npm/_git-remotes correctMkdir not in flight; initializing
+17 info git [ 'clone',
+17 info git   '--template=/home/arjun/.npm/_git-remotes/_templates',
+17 info git   '--mirror',
+17 info git   'https://github.com/floatinghotpot/cordova-httpd.git',
+17 info git   '/home/arjun/.npm/_git-remotes/git-https-github-com-floatinghotpot-cordova-httpd-git-a3df7e14' ]
+18 verbose mirrorRemote git+https://github.com/floatinghotpot/cordova-httpd.git git clone https://github.com/floatinghotpot/cordova-httpd.git
+19 verbose correctMkdir /home/arjun/.npm/_git-remotes correctMkdir not in flight; initializing
+20 verbose setPermissions git+https://github.com/floatinghotpot/cordova-httpd.git set permissions on /home/arjun/.npm/_git-remotes/git-https-github-com-floatinghotpot-cordova-httpd-git-a3df7e14
+21 verbose resolveHead git+https://github.com/floatinghotpot/cordova-httpd.git original treeish: master
+22 info git [ 'rev-list', '-n1', 'master' ]
+23 silly resolveHead git+https://github.com/floatinghotpot/cordova-httpd.git resolved treeish: 78b9818516842650a9bd59881cbb543db2848d29
+24 verbose resolveHead git+https://github.com/floatinghotpot/cordova-httpd.git resolved Git URL: git+https://github.com/floatinghotpot/cordova-httpd.git#78b9818516842650a9bd59881cbb543db2848d29
+25 silly resolveHead Git working directory: /tmp/npm-9912-c7dfc29e/git-cache-35b7ab5a/78b9818516842650a9bd59881cbb543db2848d29
+26 info git [ 'clone',
+26 info git   '/home/arjun/.npm/_git-remotes/git-https-github-com-floatinghotpot-cordova-httpd-git-a3df7e14',
+26 info git   '/tmp/npm-9912-c7dfc29e/git-cache-35b7ab5a/78b9818516842650a9bd59881cbb543db2848d29' ]
+27 verbose cloneResolved git+https://github.com/floatinghotpot/cordova-httpd.git clone Cloning into '/tmp/npm-9912-c7dfc29e/git-cache-35b7ab5a/78b9818516842650a9bd59881cbb543db2848d29'...
+27 verbose cloneResolved done.
+28 info git [ 'checkout', '78b9818516842650a9bd59881cbb543db2848d29' ]
+29 verbose checkoutTreeish git+https://github.com/floatinghotpot/cordova-httpd.git checkout Note: checking out '78b9818516842650a9bd59881cbb543db2848d29'.
+29 verbose checkoutTreeish
+29 verbose checkoutTreeish You are in 'detached HEAD' state. You can look around, make experimental
+29 verbose checkoutTreeish changes and commit them, and you can discard any commits you make in this
+29 verbose checkoutTreeish state without impacting any branches by performing another checkout.
+29 verbose checkoutTreeish
+29 verbose checkoutTreeish If you want to create a new branch to retain commits you create, you may
+29 verbose checkoutTreeish do so (now or later) by using -b with the checkout command again. Example:
+29 verbose checkoutTreeish
+29 verbose checkoutTreeish   git checkout -b <new-branch-name>
+29 verbose checkoutTreeish
+29 verbose checkoutTreeish HEAD is now at 78b9818... Merge pull request #53 from Fidelsomething/master
+30 info git [ 'submodule', '-q', 'update', '--init', '--recursive' ]
+31 verbose updateSubmodules git+https://github.com/floatinghotpot/cordova-httpd.git submodule update
+32 error addLocal Could not install /tmp/npm-9912-c7dfc29e/git-cache-35b7ab5a/78b9818516842650a9bd59881cbb543db2848d29
+33 silly fetchPackageMetaData Error: EISDIR: illegal operation on a directory, read
+33 silly fetchPackageMetaData     at Error (native)
+33 silly fetchPackageMetaData  error for https://github.com/floatinghotpot/cordova-httpd.git { Error: EISDIR: illegal operation on a directory, read
+33 silly fetchPackageMetaData     at Error (native) errno: -21, code: 'EISDIR', syscall: 'read' }
+34 silly rollbackFailedOptional Starting
+35 silly rollbackFailedOptional Finishing
+36 silly runTopLevelLifecycles Finishing
+37 silly install printInstalled
+38 verbose stack Error: EISDIR: illegal operation on a directory, read
+38 verbose stack     at Error (native)
+39 verbose cwd /home/arjun/Desktop/phone/ohmedia
+40 error Linux 4.10.0-42-generic
+41 error argv "/usr/bin/node" "/usr/bin/npm" "install" "https://github.com/floatinghotpot/cordova-httpd.git" "--production" "--no-save"
+42 error node v6.12.2
+43 error npm  v3.10.10
+44 error code EISDIR
+45 error errno -21
+46 error syscall read
+47 error eisdir EISDIR: illegal operation on a directory, read
+48 error eisdir This is most likely not a problem with npm itself
+48 error eisdir and is related to npm not being able to find a package.json in
+48 error eisdir a package you are trying to install.
+49 verbose exit [ -21, true ]

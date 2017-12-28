@@ -1,0 +1,95 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/scottdermott/cordova-plugin-discovery.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/scottdermott/cordova-plugin-discovery.git",
+        "spec": "git+https://github.com/scottdermott/cordova-plugin-discovery.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:scottdermott/cordova-plugin-discovery.git",
+          "sshUrl": "git+ssh://git@github.com/scottdermott/cordova-plugin-discovery.git",
+          "httpsUrl": "git+https://github.com/scottdermott/cordova-plugin-discovery.git",
+          "gitUrl": "git://github.com/scottdermott/cordova-plugin-discovery.git",
+          "shortcut": "github:scottdermott/cordova-plugin-discovery",
+          "directUrl": "https://raw.githubusercontent.com/scottdermott/cordova-plugin-discovery/master/package.json"
+        }
+      },
+      "/home/arjun/Desktop/phone/ohmedia"
+    ]
+  ],
+  "_from": "git+https://github.com/scottdermott/cordova-plugin-discovery.git",
+  "_id": "cordova-plugin-discovery@0.2.0",
+  "_inCache": true,
+  "_location": "/cordova-plugin-discovery",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/scottdermott/cordova-plugin-discovery.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/scottdermott/cordova-plugin-discovery.git",
+    "spec": "git+https://github.com/scottdermott/cordova-plugin-discovery.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:scottdermott/cordova-plugin-discovery.git",
+      "sshUrl": "git+ssh://git@github.com/scottdermott/cordova-plugin-discovery.git",
+      "httpsUrl": "git+https://github.com/scottdermott/cordova-plugin-discovery.git",
+      "gitUrl": "git://github.com/scottdermott/cordova-plugin-discovery.git",
+      "shortcut": "github:scottdermott/cordova-plugin-discovery",
+      "directUrl": "https://raw.githubusercontent.com/scottdermott/cordova-plugin-discovery/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/scottdermott/cordova-plugin-discovery.git#5431328fbb477d56d14f751fb39b679e7c631220",
+  "_shasum": "1b9fdf2a6d1ae6682f76deebddd0d2e890ae9792",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/scottdermott/cordova-plugin-discovery.git",
+  "_where": "/home/arjun/Desktop/phone/ohmedia",
+  "author": {
+    "name": "Scott Dermott"
+  },
+  "bugs": {
+    "url": "https://github.com/scottdermott/cordova-plugin-discovery/issues"
+  },
+  "cordova": {
+    "id": "com.scott.serviceDiscovery",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Simple plugin to get any SSDP / UPnP / DLNA service on a local network",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "gitHead": "5431328fbb477d56d14f751fb39b679e7c631220",
+  "homepage": "https://github.com/scottdermott/cordova-plugin-discovery#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-discovery",
+  "optionalDependencies": {},
+  "readme": "# Cordova Service Discovery\n\nSimple plugin to get any SSDP / UPnP / DLNA service on a local network\n\n## Using\nClone the plugin\n\n    $ git clone https://github.com/scottdermott/cordova-plugin-discovery.git\n\nCreate a new Cordova Project\n\n    $ cordova create myApp com.example.myApp MyApp\n    $ cd myApp\n\nAdd Android platform\n\n    cordova platform add android\n    cordova platform add ios\n    \nInstall the plugin\n\n    $ cordova plugin add ../cordova-plugin-discovery\n    \n\nEdit `www/js/index.js` and add the following code inside `onDeviceReady`\n\n```js\n    var serviceType = \"ssdp:all\";\n    \n    var success = function(devices) {\n        console.log(devices);\n    }\n    \n    var failure = function() {\n        alert(\"Error calling Service Discovery Plugin\");\n    }\n    \n    /**\n     * Similar to the W3C specification for Network Service Discovery api 'http://www.w3.org/TR/discovery-api/'\n     * @method getNetworkServices\n     * @param {String} serviceType e.g. \"urn:schemas-upnp-org:service:ContentDirectory:1\", \"ssdp:all\", \"urn:schemas-upnp-org:service:AVTransport:1\"\n     * @param {Function} success callback an array of services\n     * @param {Function} failure callback \n     */\n    serviceDiscovery.getNetworkServices(serviceType, success, failure);\n```\n\n\nRun the code\n\n    cordova run android\n    cordova run ios\n\n## Supported Platforms\n- Android\n- iOS\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottdermott/cordova-plugin-discovery.git"
+  },
+  "version": "0.2.0"
+}

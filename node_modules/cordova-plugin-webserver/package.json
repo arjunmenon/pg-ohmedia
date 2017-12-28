@@ -1,0 +1,111 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/bykof/cordova-plugin-webserver",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/bykof/cordova-plugin-webserver",
+        "spec": "git+https://github.com/bykof/cordova-plugin-webserver.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:bykof/cordova-plugin-webserver.git",
+          "sshUrl": "git+ssh://git@github.com/bykof/cordova-plugin-webserver.git",
+          "httpsUrl": "git+https://github.com/bykof/cordova-plugin-webserver.git",
+          "gitUrl": "git://github.com/bykof/cordova-plugin-webserver.git",
+          "shortcut": "github:bykof/cordova-plugin-webserver",
+          "directUrl": "https://raw.githubusercontent.com/bykof/cordova-plugin-webserver/master/package.json"
+        }
+      },
+      "/home/arjun/Desktop/phone/ohmedia"
+    ]
+  ],
+  "_from": "git+https://github.com/bykof/cordova-plugin-webserver.git",
+  "_id": "cordova-plugin-webserver@1.0.0",
+  "_inCache": true,
+  "_location": "/cordova-plugin-webserver",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/bykof/cordova-plugin-webserver",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/bykof/cordova-plugin-webserver",
+    "spec": "git+https://github.com/bykof/cordova-plugin-webserver.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:bykof/cordova-plugin-webserver.git",
+      "sshUrl": "git+ssh://git@github.com/bykof/cordova-plugin-webserver.git",
+      "httpsUrl": "git+https://github.com/bykof/cordova-plugin-webserver.git",
+      "gitUrl": "git://github.com/bykof/cordova-plugin-webserver.git",
+      "shortcut": "github:bykof/cordova-plugin-webserver",
+      "directUrl": "https://raw.githubusercontent.com/bykof/cordova-plugin-webserver/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/bykof/cordova-plugin-webserver.git#f77fd4d4b09fffe9937ad30f269206589d803679",
+  "_shasum": "9b8e3569fdec503250f5fe7ff01b403d4a0cedf8",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/bykof/cordova-plugin-webserver",
+  "_where": "/home/arjun/Desktop/phone/ohmedia",
+  "author": {
+    "name": "Michael Bykovski"
+  },
+  "browser": {
+    "cordova": false
+  },
+  "bugs": {
+    "url": "https://github.com/bykof/cordova-plugin-webserver/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-webserver",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "dependencies": {
+    "universal-router": "^3.2.0"
+  },
+  "description": "Cordova Plugin Webserver",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "cordova": "^6.1.1"
+  },
+  "gitHead": "f77fd4d4b09fffe9937ad30f269206589d803679",
+  "homepage": "https://github.com/bykof/cordova-plugin-webserver/",
+  "keywords": [
+    "cordova",
+    "ios",
+    "android",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova:plugin",
+    "webserver",
+    "http",
+    "request",
+    "response"
+  ],
+  "license": "Apache-2.0",
+  "name": "cordova-plugin-webserver",
+  "optionalDependencies": {},
+  "readme": "# cordova-plugin-webserver\n*A webserver plugin for cordova*\n\nThis plugin helps you to start a full webserver in JavaScript on Android and iOS.\n\n## Current supported platforms\n\n- Android (i think all versions?! Tell me if it's not true)\n- iOS (8.0 or later (armv7, armv7s or arm64))\n\n## Why?\n\nI started this project because I wanted a solution like [ExpressJS](http://expressjs.com/de/) but hybrid (for iOS and Android). I didn't want to build two native applications which each serve a backend (two codebases are just bah!). So this is the solution to create a Webserver which can receives HTTP Requests and responds with HTTP Responds.\n\n## Installation\n\nJust add the cordova plugin to your project\n\n`cordova plugin add https://github.com/bykof/cordova-plugin-webserver`\n\n## Use\n\nOk so it's pretty ez. There are 4 Methods which are available in the `webserver` variable:\n\n- start(port) or start()\n- stop()\n- onRequest(request)\n- sendResponse(responseId, responseObject, callbackSuccess, callbackError)\n\n### start(port)\n\nport (optional): Set a port of your webserver.\nDefault port: 8080\n\nThis method will start your webserver.\n\n### stop()\n\nThis method will stop your webserver.\n\n### onRequest(callback(request))\n\nOk now this is the interesting part...\nEverytime a request will be received by the webserver your callback function will be called. In this case you are thinking right! You have to define onRequest BEFORE your start your server. I think it would work also after the start() but I didn't tested it yet.\n\nThe params will look like this:\n```\n{\n\trequestId: '3jh4-ku34k-k3j4k-k3j42',\n\tbody: '',\n\theaders: {\n\t\t... some headers\n\t},\n\tmethod: 'POST',\n\tpath: '/hello/world',\n\tquery: 'bla=wer&blu=2'\n}\n```\n\n### sendResponse(requestId, responseObject,  callbackSuccess, callbackError)\n\nIf you received a request you will probably send a response \"*cough*\"...\nWe need to add a requestId param to map a response to a request, because internally the webserver will wait for the response. (Yes currently the webserver will wait until there aren't computers anymore on earth).\n\nThe params have to look like this (there are not default values for the params!):\n```\n{\n\tstatus: 200,\n\tbody: '<html>Hello ... something</html>',\n\theaders: {\n\t\t'Content-Type': 'text/html' <--- this is important\n\t}\n}\n```\n\n## Example\n\n```javascript\nwebserver.onRequest(\n\tfunction(request) {\n\t\tconsole.log(\"O MA GAWD! This is the request: \", request);\n\n\t\twebserver.sendResponse(\n\t\t\trequest.requestId,\n\t\t\t{\n\t\t\t\tstatus: 200,\n\t\t\t\tbody: '<html>Hello World</html>',\n\t\t\t\theaders: {\n\t\t\t\t\t'Content-Type': 'text/html'\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\t}\n);\n\nwebserver.start();\n\n//... after a long long time\n// stop the server\nwebserver.stop();\n```\n\n## Credits\n\nSpecial thanks to:\n\n- https://github.com/NanoHttpd/nanohttpd\n- https://github.com/swisspol/GCDWebServer\n\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bykof/cordova-plugin-webserver.git"
+  },
+  "scripts": {
+    "build": "./node_modules/babel-cli/bin/babel.js src/www/webserver.js --out-file webserver.js"
+  },
+  "version": "1.0.0"
+}
