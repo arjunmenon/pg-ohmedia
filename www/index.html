@@ -82,7 +82,7 @@ function onDeviceReady() {
     webserver.onRequest(
             function(request) {
                 console.log("O MA GAWD! This is the request: ", request);
-                document.getElementById("server").innerHTML = "O MA GAWD! This is the request: " + request;
+                document.getElementById("server").innerHTML = "O MA GAWD! This is the request: " + JSON.stringify(request);
 
                 webserver.sendResponse(
                     request.requestId,
@@ -123,7 +123,7 @@ function request(method, url, data, callback) {
 
 function sendReq() {
     // body...
-    request('GET', 'localhost:8080', undefined, function (response) {
+    request('GET', 'localhost:1337', undefined, function (response) {
         document.getElementById("response").innerHTML = JSON.stringify(response);
     });
 }
