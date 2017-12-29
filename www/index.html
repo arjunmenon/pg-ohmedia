@@ -66,67 +66,68 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
-        app.initialize();
+app.initialize();
 
-   
 
-        function onLoad() {
-            document.addEventListener("deviceready", onDeviceReady, false);
-        }
 
-        
-        webserver.onRequest(
-                    function(request) {
-                        console.log("O MA GAWD! This is the request: ", request);
-                        document.getElementById("server").innerHTML = "O MA GAWD! This is the request: " + request;
+function onLoad() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+}
 
-                        webserver.sendResponse(
-                            request.requestId,
-                            {
-                                status: 200,
-                                body: '<html>Hello World</html>',
-                                headers: {
-                                    'Content-Type': 'text/html'
-                                }
-                            }
-                        );
+
+function onDeviceReady() {
+    httpd = ( cordova && cordova.plugins && cordova.plugins.CorHttpd ) ? cordova.plugins.CorHttpd : null;
+    startServer("htdocs");
+    
+    webserver.onRequest(
+            function(request) {
+                console.log("O MA GAWD! This is the request: ", request);
+                document.getElementById("server").innerHTML = "O MA GAWD! This is the request: " + request;
+
+                webserver.sendResponse(
+                    request.requestId,
+                    {
+                        status: 200,
+                        body: '<html>Hello World</html>',
+                        headers: {
+                            'Content-Type': 'text/html'
+                        }
                     }
                 );
-
-                webserver.start(
-                      function() {
-                        alert('Success!');
-                      },
-                      function() {
-                        alert('Error!');
-                      },
-                      1337
-                );
-
-        function request(method, url, data, callback) {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-              callback(this);
             }
-          };
-          xhttp.open(method, url, true);
-          xhttp.send(data);
-        }
+        );
 
-        
+    webserver.start(
+      function() {
+        alert('Success!');
+      },
+      function() {
+        alert('Error!');
+      },
+      1337
+    );
+}
 
-        function sendReq() {
-            // body...
-            request('GET', 'localhost:8080', undefined, function (response) {
-                document.getElementById("response").innerHTML = JSON.stringify(response);
-            });
-        }
-
-            function onDeviceReady() {
-        httpd = ( cordova && cordova.plugins && cordova.plugins.CorHttpd ) ? cordova.plugins.CorHttpd : null;
-        startServer("htdocs");
+function request(method, url, data, callback) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      callback(this);
     }
+  };
+  xhttp.open(method, url, true);
+  xhttp.send(data);
+}
+
+
+
+function sendReq() {
+    // body...
+    request('GET', 'localhost:8080', undefined, function (response) {
+        document.getElementById("response").innerHTML = JSON.stringify(response);
+    });
+}
+
     function updateStatus() {
         document.getElementById('location').innerHTML = "document.location.href: " + document.location.href;
         if( httpd ) {
